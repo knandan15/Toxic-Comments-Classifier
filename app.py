@@ -122,6 +122,13 @@ if classifier_name=='Random Forest':
     st.write('Insult: ',t4)
     st.write('Threat: ',t5)
     st.write('Identity Hate: ',t6)
+    df = pd.DataFrame({
+  'date': ['Toxic','Severe Toxic', 'Obscene', 'Threat','Insult','Identity Threat'],
+  'second column': [t1, t2, t3, t4,t5,t6]
+    })
+    df = df.rename(columns={'date':'index'}).set_index('index')
+    st.bar_chart(df)
+    
 elif classifier_name=='BERT':
     res_bert=predict_bert('original',user_input)
     st.write('Toxic: ',res_bert["toxicity"][0])
@@ -130,8 +137,15 @@ elif classifier_name=='BERT':
     st.write('Insult: ',res_bert["threat"][0])
     st.write('Threat: ',res_bert["insult"][0])
     st.write('Identity Hate: ',res_bert["identity_hate"][0])
+    #graph_bert={'Toxic':res_bert["toxicity"][0],'Severe Toxic':res_bert["severe_toxicity"][0],'Obscene':res_bert["obscene"][0],'Threat':res_bert["threat"][0],'Insult':res_bert["insult"][0],'Identity Hate':res_bert["identity_hate"][0]}
+    df = pd.DataFrame({
+  'date': ['Toxic','Severe Toxic', 'Obscene', 'Threat','Insult','Identity Threat'],
+  'second column': [res_bert["toxicity"][0], res_bert["severe_toxicity"][0], res_bert["obscene"][0], res_bert["threat"][0],res_bert["insult"][0],res_bert["identity_hate"][0]]
+    })
 
-
+    df = df.rename(columns={'date':'index'}).set_index('index')
+    st.bar_chart(df)
+    
 
 
 # def get_dataset(name):
