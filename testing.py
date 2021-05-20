@@ -19,7 +19,7 @@ def run(model_name):
     Displays results as a pandas DataFrame object.
     If a dest_file is given, it saves the results to a txt file.
     """
-    text = ['fuck you']
+    text = ['stai zitto, tu sei un bugiardo']
     if model_name is not None:
         res = Detoxify(model_name).predict(text)
     # else:
@@ -96,4 +96,4 @@ print('Threat: ',pred_thr[0])
 print('Insult: ',pred_ins[0])
 print('Identity hate: ',pred_ide[0])
 
-run('original')
+run('multilingual')

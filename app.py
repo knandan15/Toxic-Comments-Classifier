@@ -30,7 +30,7 @@ user_input = st.text_input('\nEnter Comment: ')
 
 classifier_name = st.sidebar.selectbox(
     'Select classifier',
-    ('Random Forest', 'BERT')
+    ('Random Forest', 'BERT','Multilingual')
 )
 #BERT CODE
 def predict_bert(model_name,user_input):
@@ -148,4 +148,8 @@ elif classifier_name=='BERT':
 
     df = df.rename(columns={'date':'index'}).set_index('index')
     st.bar_chart(df)
+    
+elif classifier_name=='Multilingual':
+    res_bert=predict_bert('multilingual',user_input)
+    st.write('Toxicity: ',res_bert["toxicity"][0])
     
