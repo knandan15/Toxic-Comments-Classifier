@@ -70,7 +70,7 @@ with open(r"threat_model.pkl", "rb") as f:
 with open(r"identity_hate_model.pkl", "rb") as f:
     ide_model  = pickle.load(f)
 
-data=['fuck you']
+data=['i hate you']
 vect = tox.transform(data)
 pred_tox = tox_model.predict_proba(vect)[:,1]
 
@@ -96,4 +96,4 @@ print('Threat: ',pred_thr[0])
 print('Insult: ',pred_ins[0])
 print('Identity hate: ',pred_ide[0])
 
-run('multilingual')
+run('multilingual')     #for multiple languages
